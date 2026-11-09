@@ -74,7 +74,7 @@ You lose very little: your AI agent (Claude, Codex) reads gbrain's results and w
 
 - Don't add an AI key to gbrain unless you decide to.
 - If you do want written answers from gbrain itself, set a local model (`gbrain config set chat_model ollama:<model>`). It's a large download and slower than the cloud.
-- Run these again after `gbrain upgrade` and check `gbrain config show`: new versions can add features.
+- **You don't need to repeat this.** The automatic maintenance (`scripts/setup-maintenance-macos.sh`) re-applies these settings and checks them every day, including straight after any gbrain upgrade, and notifies you if it can't.
 
 ## Getting your knowledge in
 
@@ -98,6 +98,8 @@ A sync reads every file in the source and stores it in your brain. One real-worl
 - Check first: look through the folder, or ask your agent to "scan this folder for keys and passwords before I sync it".
 
 ## Upgrading
+
+Automatic: `scripts/maintain.sh` (switched on by `scripts/setup-maintenance-macos.sh`) checks daily, backs up `~/.gbrain`, upgrades gbrain, upgrades Bun if gbrain needs it, finishes the upgrade, rebuilds the search index, then re-applies the fully local settings. To do it by hand:
 
 ```bash
 gbrain check-update

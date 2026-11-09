@@ -36,13 +36,13 @@ The single highest-value habit: **every pull request gets `/review` before you m
 
 ## Updating
 
-gstack checks for updates itself and offers to upgrade. To upgrade by hand:
+Automatic: the daily maintenance (`scripts/setup-maintenance-macos.sh`) runs gstack's own unattended upgrader, which only fast-forwards and refuses (and tells you) if you've edited gstack's files. To upgrade by hand:
 
 ```bash
 cd ~/.claude/skills/gstack && git pull && ./setup
 ```
 
-Don't upgrade in the middle of important work: big jumps can change how skills behave.
+Upgrades run at 3:15am so they don't land in the middle of your work.
 
 ## Optional extras
 

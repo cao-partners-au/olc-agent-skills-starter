@@ -22,6 +22,6 @@ After installing, add the agent rules so your AI tools know when to use them: se
 | Ollama | 0.40.15 with `nomic-embed-text` |
 | REA (`rea-agents`) | 6.8.0 |
 
-Newer versions will usually work. If something breaks after an update, check that tool's release notes first.
+gstack and gbrain update themselves through the daily maintenance (`scripts/setup-maintenance-macos.sh`), which then re-checks the agreed configuration. ponytail updates reach you through the starter: new versions are vetted before they're added here, then the daily maintenance pulls them into your copy. REA is never auto-updated, because it's pinned per project.
 
 All four tools are made by other people. Read [VETTING-THIRD-PARTY-SKILLS.md](../VETTING-THIRD-PARTY-SKILLS.md) before installing, and keep their versions noted here up to date.

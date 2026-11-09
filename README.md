@@ -24,6 +24,11 @@ A skill is a folder with a `SKILL.md` file: plain instructions your agent loads 
    ```
 5. Restart your AI tool. Your skills are now available.
 6. **Optional, recommended:** install the add-ons in [integrations/](integrations/README.md): gstack (review, testing, shipping) and gbrain (local memory).
+7. **Switch on automatic maintenance** (macOS), so you never have to update anything by hand:
+   ```bash
+   ./scripts/setup-maintenance-macos.sh
+   ```
+   Every day it updates gstack and gbrain, pulls improvements from this starter into your copy (never overwriting files you've edited), puts gbrain's fully local settings back if anything changed them, and checks everything still works. You only hear from it, as a Mac notification, if something needs you. Log: `~/Library/Logs/agent-skills-maintain.log`.
 
 Not comfortable with the terminal? Paste this into your agent:
 

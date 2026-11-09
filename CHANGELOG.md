@@ -2,6 +2,11 @@
 
 Note notable changes here, newest first.
 
+## Automatic maintenance
+
+- `scripts/maintain.sh`, run daily and at login by `scripts/setup-maintenance-macos.sh`: updates gstack and gbrain (including Bun and the search index), pulls starter improvements into your copy without overwriting your edits, enforces gbrain's fully local configuration, and checks Ollama and gbrain are healthy. Notifies only when something needs you.
+- `.starter-managed`: the list of starter files, so updates can tell which ones you've edited.
+
 ## Integrations
 
 - Guides for ponytail, gstack, gbrain and REA in `integrations/`, with the versions they were tested on.
