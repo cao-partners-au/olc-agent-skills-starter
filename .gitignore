@@ -1,0 +1,21 @@
+# Secrets: never commit these
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials.json
+*secret*.json
+*secret*.txt
+secrets/
+credentials/
+
+# Local and generated files
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+venv/
+*.log

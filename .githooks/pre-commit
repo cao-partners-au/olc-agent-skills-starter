@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Blocks a commit that looks like it contains a secret. A safety net, not a guarantee.
+# Uses gitleaks if installed (stronger); otherwise a built-in check for common key formats.
+set -euo pipefail
+
+if command -v gitleaks >/dev/null 2>&1; then
+  exec gitleaks protect --staged --redact --no-banner
+fi
+
+PATTERN='(sk-ant-[A-Za-z0-9_-]{20,}|sk-(proj-)?[A-Za-z0-9_-]{32,}|AIza[0-9A-Za-z_-]{35}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|xox[abpr]-[A-Za-z0-9-]{20,}|sb_secret_[A-Za-z0-9_-]{20,}|EAA[A-Za-z0-9]{60,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|postgres(ql)?://[^:@/ ]+:[^@/ ]+@)'
+
+hits="$(git diff --cached --name-only --diff-filter=ACM -z | xargs -0 -I{} git grep --cached -nIE "$PATTERN" -- {} 2>/dev/null | cut -d: -f1,2 || true)"
+blocked_names="$(git diff --cached --name-only --diff-filter=ACM | grep -E '(^|/)(\.env(\..*)?|.*\.pem|.*\.key|credentials\.json|.*secret.*\.(json|txt))$' | grep -vE '\.example$' || true)"
+
+if [ -n "$hits$blocked_names" ]; then
+  echo "Commit blocked: this looks like it contains a secret."
+  [ -n "$hits" ] && echo "$hits" | sed 's/^/  possible key at /'
+  [ -n "$blocked_names" ] && echo "$blocked_names" | sed 's/^/  secret-type file: /'
+  echo "Move the value to your password manager or an environment variable, then try again."
+  echo "If you're certain it's not a secret: git commit --no-verify"
+  exit 1
+fi
+exit 0
