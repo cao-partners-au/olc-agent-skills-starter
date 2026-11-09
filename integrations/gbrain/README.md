@@ -115,4 +115,13 @@ If searches then say `projection_pending` or return nothing: run `gbrain project
 3. Does the database open? `gbrain stats`. If it errors, upgrade gbrain (above): an old version failed to start on newer macOS.
 4. Back up first if you're unsure: `cp -Rp ~/.gbrain ~/.gbrain.bak-$(date +%F)`.
 
+### "Claim your sources" notice
+
+After setup or an upgrade, gbrain may suggest running `gbrain trust claim-sources`. Read this before you do.
+
+- **What it means:** pages that came in from a folder are marked "unverified origin", so agents treat them as reference material, not as your own notes. That's normal, and search works the same either way.
+- **Code can't be claimed, and that's fine.** gbrain reports "nothing to lift" for a code source.
+- **Only claim notes you actually wrote.** Claiming old copies, template docs or anything you didn't write makes agents trust stale content, which makes answers worse, not better. If in doubt, don't claim.
+- **Close gbrain first.** The command needs the database to itself; with your AI tool connected you get a `pglite_busy` error naming a process ID. Stop that process (`kill <PID>`), run the command, then let your AI tool reconnect gbrain.
+
 Linux: install Ollama from [ollama.com](https://ollama.com) (it sets up its own service), set `OLLAMA_KEEP_ALIVE=0` in that service, and skip `setup-ollama-macos.sh`.
