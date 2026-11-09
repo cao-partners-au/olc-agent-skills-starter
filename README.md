@@ -17,7 +17,13 @@ A skill is a folder with a `SKILL.md` file: plain instructions your agent loads 
    ./install.sh --dry-run   # shows what it would do, changes nothing
    ./install.sh             # links every skill into each AI tool it finds
    ```
-4. Restart your AI tool. Your skills are now available.
+4. **Add the agent rules**, so your agent knows when to use the add-ons below:
+   ```bash
+   ./scripts/add-agent-rules.sh --dry-run
+   ./scripts/add-agent-rules.sh
+   ```
+5. Restart your AI tool. Your skills are now available.
+6. **Optional, recommended:** install the add-ons in [integrations/](integrations/README.md): gstack (review, testing, shipping) and gbrain (local memory).
 
 Not comfortable with the terminal? Paste this into your agent:
 
@@ -50,6 +56,7 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | Folder | What it does |
 |---|---|
 | `skills/write-skill` | Creates or improves a skill in this repo, in the right format |
+| `skills/ponytail` | Coding rules: the smallest change that fully solves the task ([guide](integrations/ponytail/README.md)) |
 | `skills/_template` | A blank skill to copy |
 | `skills/meta-*`, `ad-pixel-funnel`, `marketing-roas`, `cac-and-conversion` | Meta ads: build, review weekly, health check, pixel and conversions setup, return on ad spend |
 | `skills/google-ads-*` | Google Ads campaign launch and conversion tracking |
@@ -58,6 +65,17 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | `skills/open-operator-audit` | SEO and AI search (GEO) audit for your website |
 
 The ad skills need your own ad account logins. Start with [docs/ad-skills/QUICKSTART.md](docs/ad-skills/QUICKSTART.md), and see [ADAPTING-TO-YOUR-STACK.md](docs/ad-skills/ADAPTING-TO-YOUR-STACK.md) to fit them to your business.
+
+## Add-ons (integrations)
+
+| Add-on | What it does | Guide |
+|---|---|---|
+| ponytail | Smaller, safer code changes. Included in `skills/` | [integrations/ponytail](integrations/ponytail/README.md) |
+| gstack | Workflow skills: `/review` before every merge, `/qa` and `/browse` for testing in a real browser, `/ship` and `/land-and-deploy` for releases, `/investigate` for debugging, `/cso` for security audits | [integrations/gstack](integrations/gstack/README.md) |
+| gbrain | Long-term searchable memory, run locally with Ollama so nothing leaves your computer | [integrations/gbrain](integrations/gbrain/README.md) |
+| REA | Reverse-engineering tools for software you're allowed to inspect. Per project only | [integrations/rea](integrations/rea/README.md) |
+
+[agent-rules/](agent-rules/README.md) tells your agent when to use each one, including running `/review` on every pull request before asking you to merge.
 
 ## Rules of the house
 
