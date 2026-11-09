@@ -13,7 +13,8 @@
 #      the search index.
 #   4. Enforces gbrain's fully local configuration (local embeddings, no cloud models,
 #      no stored AI keys) and puts it back if anything changed.
-#   5. Checks Ollama is running and a real gbrain search works.
+#   5. Syncs your notes and code folders into gbrain (never git-pulls them).
+#   6. Checks Ollama is running and a real gbrain search works.
 # A macOS notification appears only when something needs you. Full log:
 #   ~/Library/Logs/agent-skills-maintain.log
 set -uo pipefail
@@ -140,6 +141,33 @@ enforce_local() {
   log "gbrain: local configuration checked"
 }
 [ "${GBRAIN:-0}" = 1 ] && enforce_local
+
+# 4b. Sync your notes and code into gbrain ----------------------------------------
+# Every source with a folder on disk is re-read nightly, so gbrain never goes stale.
+# --no-pull: never git-pulls your repos (work in progress is left alone). When an AI
+# tool has gbrain open, the sync runs inside it. The source list is cached because it
+# can't be read while gbrain is open.
+sync_sources() {
+  local cache="$STATE/gbrain-sources" list ids s
+  list="$(t 60 gbrain sources list 2>/dev/null)"
+  if printf '%s' "$list" | grep -q '^SOURCES'; then
+    ids="$(printf '%s\n' "$list" | awk '/^  [A-Za-z0-9_.-]+ +/ {n=$1; next} /^ +\// && n {print n; n=""}')"
+    [ "$DRY" = 0 ] && printf '%s\n' "$ids" > "$cache"
+  else
+    ids="$(cat "$cache" 2>/dev/null)"
+  fi
+  if [ -z "$ids" ]; then
+    if printf '%s' "$list" | grep -q '^SOURCES'; then log "gbrain: no folder sources to sync (add one with gbrain sources add)"
+    else log "gbrain: busy, couldn't read the source list yet; will sync next run"; fi
+    return
+  fi
+  for s in $ids; do
+    if [ "$DRY" = 1 ]; then log "  would run: gbrain sync --source $s --no-pull"; continue; fi
+    if t 3600 gbrain sync --source "$s" --no-pull >>"$LOG" 2>&1; then log "gbrain: synced $s"
+    else warn "gbrain couldn't sync source $s. See the log."; fi
+  done
+}
+[ "${GBRAIN:-0}" = 1 ] && sync_sources
 
 # 5. Health -------------------------------------------------------------------------
 if [ "${GBRAIN:-0}" = 1 ] && [ "$DRY" = 0 ]; then

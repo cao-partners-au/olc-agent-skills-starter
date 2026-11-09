@@ -26,6 +26,7 @@ Before asking me to merge any pull request, in any repo, run `/review` on it, fi
 ### Memory (gbrain)
 
 - Search gbrain before external lookups when the question might be about my own business, decisions or past work.
+- Before changing code, search gbrain for gotchas, past incidents and rules about the files and systems involved, and say what you found. If gbrain isn't connected, say so rather than skipping it.
 - Save decisions, fixes and gotchas I ask you to remember to gbrain.
 - Never sync a folder into gbrain without checking it for keys, passwords and `.env` files first.
 
