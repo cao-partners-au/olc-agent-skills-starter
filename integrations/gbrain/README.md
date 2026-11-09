@@ -60,8 +60,21 @@ Don't rely on `gbrain doctor` alone: it can report healthy while the database wo
 
 ## Keep it fully local
 
-- Don't add an OpenAI, Voyage or other AI key to gbrain unless you decide to. Without one, nothing is sent out.
-- If you later set a chat or "expansion" model (used for written answers and smarter queries), choose a local one (`ollama:...`), or accept that those queries go to that provider.
+Embeddings are local, but gbrain has three optional features that use a cloud AI model: rewriting your searches ("expansion"), re-ranking results, and writing summarised answers. If an AI key is set anywhere on your computer (for example `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in your shell profile for another tool), gbrain can pick it up and start sending queries out. Switch them off:
+
+```bash
+gbrain config set search.expansion false
+gbrain config set search.reranker.enabled false
+gbrain config unset chat_model
+gbrain config unset expansion_model
+gbrain config show          # check: no openai, anthropic or voyage models or keys listed
+```
+
+You lose very little: your AI agent (Claude, Codex) reads gbrain's results and writes the answer itself. Use `gbrain search` (returns matching notes) rather than `gbrain query` (asks a model to write an answer).
+
+- Don't add an AI key to gbrain unless you decide to.
+- If you do want written answers from gbrain itself, set a local model (`gbrain config set chat_model ollama:<model>`). It's a large download and slower than the cloud.
+- Run these again after `gbrain upgrade` and check `gbrain config show`: new versions can add features.
 
 ## Getting your knowledge in
 
