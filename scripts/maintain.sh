@@ -116,7 +116,11 @@ enforce_local() {
   # values (not keys) the agreed setup must have
   do_ gbrain config set search.expansion false
   do_ gbrain config set search.reranker.enabled false
-  for k in chat_model expansion_model openai_api_key anthropic_api_key voyage_api_key openrouter_api_key gemini_api_key; do
+  # model pins live in config.json and need --file to unset; keys unset plainly
+  for k in chat_model expansion_model; do
+    if grep -q "\"$k\"" "$cfg"; then log "gbrain: removing $k"; do_ gbrain config unset "$k" --file; fi
+  done
+  for k in openai_api_key anthropic_api_key voyage_api_key openrouter_api_key gemini_api_key; do
     if grep -q "\"$k\"" "$cfg"; then log "gbrain: removing $k"; do_ gbrain config unset "$k"; fi
   done
   [ "$DRY" = 1 ] && return

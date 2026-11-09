@@ -65,8 +65,8 @@ Embeddings are local, but gbrain has three optional features that use a cloud AI
 ```bash
 gbrain config set search.expansion false
 gbrain config set search.reranker.enabled false
-gbrain config unset chat_model
-gbrain config unset expansion_model
+gbrain config unset chat_model --file
+gbrain config unset expansion_model --file
 gbrain config show          # check: no openai, anthropic or voyage models or keys listed
 ```
 

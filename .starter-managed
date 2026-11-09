@@ -1,6 +1,3 @@
-1f1eb9180225ecd879650da5a516f0bfd2478f18 scripts/build-manifest.sh
-cf595d273392af96335860e7c3e0d32c76c98839 scripts/maintain.sh
-fcc2bbca31505b7dfa3738a072fa733aacdb10eb scripts/setup-maintenance-macos.sh
 04d484ccae2f5e3d6b9da563209158ea81c43fed .githooks/pre-commit
 bb1606d26c145d09c4cb69d51c8fa13bc193c679 .gitignore
 4e73826742ffc28c2c08b86454a5441ffe983624 CHANGELOG.md
@@ -16,11 +13,14 @@ e6cc7852c73eb064abb21ae55b5278e774410752 docs/ad-skills/README.md
 1a8595097672856e1bb8b23c900c76d294072518 docs/ad-skills/WHATS-NEW.md
 60d020177016a0780b2c3fadd86a18f063f55cc3 install.sh
 aa395e54d89ac28b1867859ac0d1134e2ebcd1b6 integrations/README.md
-d009829b8c99a04e41b52e6e7c098dbe27bcbc89 integrations/gbrain/README.md
+e58f85db13ff32edf0d11145221f2ca49b23925a integrations/gbrain/README.md
 407e6e95af5c0434f41c89e2c34f0946591f363f integrations/gstack/README.md
 f91d3058898e32923154313388c44930ccaf2f69 integrations/ponytail/README.md
 c46aaa9eef6711db5706e7a1b5ab464ef7b8163c integrations/rea/README.md
 30d9fdc2430c2ec6ae8c565cd1c8200e78abfe4d scripts/add-agent-rules.sh
+1f1eb9180225ecd879650da5a516f0bfd2478f18 scripts/build-manifest.sh
+8343c4ae942af58f9b6319ce884066bd07f55b01 scripts/maintain.sh
+fcc2bbca31505b7dfa3738a072fa733aacdb10eb scripts/setup-maintenance-macos.sh
 15190013aa702fb6dc51ffb7e8093ec4d2764831 scripts/setup-ollama-macos.sh
 4adfde131ad9da2424cc03e98dd906608f6b8479 skills/_template/SKILL.md
 ee84687ea1d484fbb9c4994562087720cbc2e3b2 skills/ad-pixel-funnel/README.md
