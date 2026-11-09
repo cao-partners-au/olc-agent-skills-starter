@@ -95,8 +95,9 @@ If searches then say `projection_pending` or return nothing: run `gbrain project
 
 ## If it stops working
 
-1. Is Ollama running? `curl 127.0.0.1:11434/api/version` should print a version. If not: `launchctl kickstart -k gui/$(id -u)/local.ollama`.
-2. Does the database open? `gbrain stats`. If it errors, upgrade gbrain (above): an old version failed to start on newer macOS.
-3. Back up first if you're unsure: `cp -Rp ~/.gbrain ~/.gbrain.bak-$(date +%F)`.
+1. Is a sync running? The local database lets only one program use it at a time, so while a big sync runs, your AI tool can't connect to gbrain (it shows a timeout). Wait for the sync to finish, then reconnect gbrain in your AI tool.
+2. Is Ollama running? `curl 127.0.0.1:11434/api/version` should print a version. If not: `launchctl kickstart -k gui/$(id -u)/local.ollama`.
+3. Does the database open? `gbrain stats`. If it errors, upgrade gbrain (above): an old version failed to start on newer macOS.
+4. Back up first if you're unsure: `cp -Rp ~/.gbrain ~/.gbrain.bak-$(date +%F)`.
 
 Linux: install Ollama from [ollama.com](https://ollama.com) (it sets up its own service), set `OLLAMA_KEEP_ALIVE=0` in that service, and skip `setup-ollama-macos.sh`.
