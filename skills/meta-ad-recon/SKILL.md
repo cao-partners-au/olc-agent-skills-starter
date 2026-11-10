@@ -22,6 +22,25 @@ have the part that actually matters.
 This skill is Meta only. It uses the public Ad Library, which needs no login, no
 API key and no subscription.
 
+## The data source: a logged-out browser, never a paid scraper
+
+**Do not use Apify, Foreplay or any other paid scraper, even if one is connected**
+(for example through Composio or an MCP). Their presence is not a reason to use
+them; the free route below is the point of this skill. Use a paid tool only if the
+user explicitly asks for it.
+
+Checked 11 Nov 2026:
+
+| Route | Works? | Why |
+|---|---|---|
+| Logged-out headless browser on the Ad Library page | **Yes** | A search loads in about 10 seconds with advertiser, Library ID, start date and full copy |
+| Plain web fetch (curl, fetch tools) | No | Facebook returns a 403 security check, no ad data |
+| Meta's official Ad Library API | No | Returns only political and issue ads, plus ads shown in the UK or EU. Australian commercial ads are not included, even with a token |
+
+So always open the library in a real browser (the agent's own browser tool, or
+headless Chromium). Two limits to state up front: about 30 ads per search when
+logged out (see the render cap section below), and no spend or reach for anyone.
+
 ---
 
 ## What the public library gives you, verified 6 Oct 2026

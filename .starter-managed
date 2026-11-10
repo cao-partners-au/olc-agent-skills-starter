@@ -1,6 +1,6 @@
 04d484ccae2f5e3d6b9da563209158ea81c43fed .githooks/pre-commit
 bb1606d26c145d09c4cb69d51c8fa13bc193c679 .gitignore
-4e73826742ffc28c2c08b86454a5441ffe983624 CHANGELOG.md
+975fec1bf9dffe50ce395cdae1474dbba7b4f5a3 CHANGELOG.md
 b2193a1748053c877156601d1d3ed96f4c11b389 HOUSEKEEPING.md
 52159f4211fbe63d3a6d7dd2208df83791823b72 LICENSE
 0a88eb259edaec54ac5e6fbff6cdc6127ccad29d README.md
@@ -37,7 +37,7 @@ d6337c5460bfb6857b1a2ea88895f89ec31aaf22 skills/google-ads-campaign-launch/READM
 da37227469d1556c724eaccd55d8d78a41587e24 skills/meta-account-healthcheck/SKILL.md
 429a0b758563f0cb6c5db9a01862a1983b80acbb skills/meta-account-healthcheck/scripts/healthcheck.py
 3c38f39aabec5fa496e16bb9ed1d4864db274f6f skills/meta-ad-recon/README.md
-a9fe31ee149c3aecdd50a8537cee4f62c71e0700 skills/meta-ad-recon/SKILL.md
+aa1dffb1f1a97d9cd9cb423cc4b423f9d38978e3 skills/meta-ad-recon/SKILL.md
 e24789e553fbe21f10fb273369eaed8f9c936384 skills/meta-ads-campaign/README.md
 2ece5a3a26c8cded07e28fbb5fdeda220f19cf2b skills/meta-ads-campaign/SKILL.md
 79e110895ed99e4c520ae6451a08b9df973fd8a7 skills/meta-ads-campaign/references/creative-playbook.md

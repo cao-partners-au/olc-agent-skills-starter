@@ -2,6 +2,10 @@
 
 Note notable changes here, newest first.
 
+## Skills
+
+- `meta-ad-recon`: says outright to use a logged-out browser on the public Ad Library, never Apify, Foreplay or another paid scraper even when one is connected, and why a plain fetch and Meta's API don't work for Australian ads.
+
 ## Automatic maintenance
 
 - `scripts/maintain.sh`, run daily and at login by `scripts/setup-maintenance-macos.sh`: updates gstack and gbrain (including Bun and the search index), pulls starter improvements into your copy without overwriting your edits, enforces gbrain's fully local configuration, and checks Ollama and gbrain are healthy. Notifies only when something needs you.
