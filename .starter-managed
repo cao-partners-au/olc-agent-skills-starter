@@ -1,5 +1,3 @@
-3e4e904c94703a07ef640c56b16bfb871c3095c5 skills/karpathy-council/README.md
-e37b54270a9d0b399288f63b15529701d32cb87d skills/karpathy-council/SKILL.md
 04d484ccae2f5e3d6b9da563209158ea81c43fed .githooks/pre-commit
 bb1606d26c145d09c4cb69d51c8fa13bc193c679 .gitignore
 e30ebcf3a6f4049729c27a12ff21d2a36194147b CHANGELOG.md
@@ -34,13 +32,15 @@ d6337c5460bfb6857b1a2ea88895f89ec31aaf22 skills/google-ads-campaign-launch/READM
 3cf29e26c8d1a32ad18406e3123aa237a0ead7fe skills/google-ads-campaign-launch/SKILL.md
 3e37bb302dfd8ceec199c7e23a7fa0f6bd09ee5f skills/google-ads-conversions/README.md
 510ccaa8eca3f749dedf127f2640aebe510ca6b2 skills/google-ads-conversions/SKILL.md
+3e4e904c94703a07ef640c56b16bfb871c3095c5 skills/karpathy-council/README.md
+e37b54270a9d0b399288f63b15529701d32cb87d skills/karpathy-council/SKILL.md
 673059e8be087615f41275214caa897f45c5fbb0 skills/marketing-roas/README.md
-1c9abc77d42672fded8945cf5f37058410be64f6 skills/marketing-roas/SKILL.md
+ae0e9785167f42335dba4da3f28bb91a383f1242 skills/marketing-roas/SKILL.md
 2cbfb0e8369d465dbbf8149e3ac905bcbe3964f0 skills/meta-account-healthcheck/README.md
 da37227469d1556c724eaccd55d8d78a41587e24 skills/meta-account-healthcheck/SKILL.md
 429a0b758563f0cb6c5db9a01862a1983b80acbb skills/meta-account-healthcheck/scripts/healthcheck.py
 3c38f39aabec5fa496e16bb9ed1d4864db274f6f skills/meta-ad-recon/README.md
-aa1dffb1f1a97d9cd9cb423cc4b423f9d38978e3 skills/meta-ad-recon/SKILL.md
+465c6cf608912eba46ffc80901abacf750cd7365 skills/meta-ad-recon/SKILL.md
 e24789e553fbe21f10fb273369eaed8f9c936384 skills/meta-ads-campaign/README.md
 2ece5a3a26c8cded07e28fbb5fdeda220f19cf2b skills/meta-ads-campaign/SKILL.md
 79e110895ed99e4c520ae6451a08b9df973fd8a7 skills/meta-ads-campaign/references/creative-playbook.md

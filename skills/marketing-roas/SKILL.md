@@ -103,8 +103,8 @@ never draw an efficiency comparison against a channel whose spend you can see.
 **4b. Load the retainer into the comparison.** A managed channel costs the fee
 plus the media. Comparing an agency's cost per lead on media alone against an
 in-house channel with no fee makes the agency look about half its real price.
-Loaded, one engagement that appeared to be half the cost of in-house was a dead
-heat, $179 against $186 per lead.
+Loaded, a channel that appears to be half the cost of in-house can turn out to be a
+dead heat, for example $180 against $185 per lead.
 
 **5. Say plainly when a channel is unmeasured.** If click identifiers are not
 captured — `gclid` for Google, `ttclid` for TikTok, `fbclid` for Meta — leads
@@ -115,9 +115,9 @@ click id, do the same for the others.
 **6. Check the denominator before you call anything CAC.** Dividing ONE channel's
 cost by EVERY new customer is not that channel's acquisition cost, and a column
 headed "new customers" beside a column headed "CAC" will be read as a channel
-result no matter what the surrounding text says. It happened: an agency figure of
-$3,755 per customer was really somewhere between $7,500 and $17,000, because most
-of those customers came from elsewhere.
+result no matter what the surrounding text says. For example, a channel that
+appears to cost $4,000 per customer may really cost somewhere between $8,000 and
+$16,000, because most of those customers came from elsewhere.
 
 Give three readings and label them:
 
@@ -135,8 +135,8 @@ only. If 2 of 5 attributed customers carry the channel, the share is 40%, not
 revenue of the customers who first made contact in a month. Monthly sales is what
 the business banked. They are wildly different, and presenting cohort revenue in a
 column next to a month invites someone to compare it against the figure they know
-and conclude the whole report is wrong. One review showed $47,500 for August
-against the owner's actual $170,000 month, and he was right to stop reading.
+and conclude the whole report is wrong. For example, a report showing $50,000
+for a month the owner knows banked $150,000 will lose the reader on that line.
 
 Always include the reconciliation, with the gap explained:
 

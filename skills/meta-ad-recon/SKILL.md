@@ -305,16 +305,16 @@ Two cross-checks that stop misdiagnosis:
 
 ### Worked example: five ads, one symptom, five different causes
 
-Real figures from a lead-generation account over eight weeks, anonymised. Every
-one of these would show up on a dashboard as "performance is down".
+Illustrative figures for a lead-generation account over eight weeks. Every one of
+these would show up on a dashboard as "performance is down".
 
 | Ad | Spend | CTR first to last | CPM first to last | Frequency | Verdict |
 |---|---|---|---|---|---|
-| Top spender, long-running video | $7.7k | 2.10 to 2.08 | $129 to $1,051 | 1.75 to 1.99 | **Not creative fatigue.** CTR is flat; an 8x CPM rise is a delivery or auction problem. Replacing the creative would have thrown away a working ad and left the real cause untouched |
-| Best-performing static, founder-led | $3.9k | 6.26 to 4.59 | $46 to $56 | 1.62 to 1.21 | **Classic fatigue** of the strongest hook in the account. CTR down 27% while cost crept up. Rebuild the hook and visual, keep the angle and the script |
-| Second founder static, different market | $0.9k | 7.27 to 5.31 | $44 to $44 | 1.44 to 1.71 | **Post-click breakdown.** The highest CTR in the account and zero leads. The ad is doing its job; the landing page or the offer behind it is not |
-| Low-budget test creative | $0.6k | 2.61 to 1.57 | $119 to $53 | 1.21 to 2.76 | **Audience exhaustion.** Frequency more than doubled, CTR halved, one lead for the whole spend. Kill it |
-| Lead-magnet offer ad | $2.3k | 2.62 to 3.02 | $76 to $77 | 1.62 to 1.27 | **Not fatigued, improving.** Best cost per lead in the account. Scale it rather than refresh it |
+| Top spender, long-running video | $8k | 2.1 to 2.1 | $130 to $1,000 | 1.8 to 2.0 | **Not creative fatigue.** CTR is flat; an 8x CPM rise is a delivery or auction problem. Replacing the creative would have thrown away a working ad and left the real cause untouched |
+| Best-performing static | $4k | 6.0 to 4.5 | $45 to $55 | 1.6 to 1.2 | **Classic fatigue** of the strongest hook in the account. CTR down 25% while cost crept up. Rebuild the hook and visual, keep the angle and the script |
+| Second static, different market | $1k | 7.0 to 5.5 | $45 to $45 | 1.4 to 1.7 | **Post-click breakdown.** The highest CTR in the account and zero leads. The ad is doing its job; the landing page or the offer behind it is not |
+| Low-budget test creative | $0.5k | 2.6 to 1.3 | $120 to $55 | 1.2 to 2.8 | **Audience exhaustion.** Frequency more than doubled, CTR halved, one lead for the whole spend. Kill it |
+| Lead-magnet offer ad | $2k | 2.5 to 3.0 | $75 to $75 | 1.6 to 1.3 | **Not fatigued, improving.** Best cost per lead in the account. Scale it rather than refresh it |
 
 The lesson is the spread of causes, not the numbers. A fatigue report that said
 "CTR is falling, make new creative" would have been wrong on four of these five:
