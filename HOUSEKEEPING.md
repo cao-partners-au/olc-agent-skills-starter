@@ -5,7 +5,7 @@ A skills repo stays useful only if it stays tidy. These rules keep it that way.
 ## 1. No secrets, ever
 
 - API keys, tokens, passwords and private links never go in a skill or anywhere in this repo.
-- Keep them in a password manager (1Password, Bitwarden) or in environment variables, and have the skill read them from there.
+- Keep them in a password manager (1Password, Bitwarden) or in environment variables, and have the skill read them from there. The `1password-secrets` skill sets this up for you.
 - In a skill, name the variable, never the value: "uses `META_ACCESS_TOKEN`", not the token itself.
 - This repo blocks commits that look like they contain a secret (see `.githooks/pre-commit`, switched on by `install.sh`). It is a safety net, not a guarantee. If a secret is ever committed, treat it as leaked: change the key straight away, then remove it from the repo.
 - Keep your copy of this repo **private**.

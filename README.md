@@ -63,6 +63,7 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | `skills/write-skill` | Creates or improves a skill in this repo, in the right format |
 | `skills/ponytail` | Coding rules: the smallest change that fully solves the task ([guide](integrations/ponytail/README.md)) |
 | `skills/_template` | A blank skill to copy |
+| `skills/1password-secrets` | Keep keys and passwords in 1Password, and give agents read-only access through a service account |
 | `skills/meta-*`, `ad-pixel-funnel`, `marketing-roas`, `cac-and-conversion` | Meta ads: build, review weekly, health check, pixel and conversions setup, return on ad spend |
 | `skills/google-ads-*` | Google Ads campaign launch and conversion tracking |
 | `skills/tiktok-ads-mcp` | Read TikTok Ads performance |

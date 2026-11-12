@@ -4,6 +4,7 @@ Note notable changes here, newest first.
 
 ## Skills
 
+- `1password-secrets`: new. Create a vault per purpose, add credentials without exposing them, create a read-only service account, store its token in the keychain or host, and read secrets at runtime with `op read` and `op run`.
 - `meta-ad-recon`: says outright to use a logged-out browser on the public Ad Library, never Apify, Foreplay or another paid scraper even when one is connected, and why a plain fetch and Meta's API don't work for Australian ads.
 
 ## Automatic maintenance
