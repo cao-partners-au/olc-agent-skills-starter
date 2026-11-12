@@ -4,6 +4,9 @@ Note notable changes here, newest first.
 
 ## Skills
 
+- `karpathy-council`: new. Five advisors, anonymous peer review and a chairman's verdict for high-stakes decisions.
+- `1password-secrets`: checked against 1Password's official docs and tested reading secrets with a real service account (`op read`, `op run`, `op inject`). Adds plan limits, the minimum CLI version, and which vaults service accounts can't reach.
+- README and HOUSEKEEPING: use your own private copy; this starter will be made private again.
 - `1password-secrets`: new. Create a vault per purpose, add credentials without exposing them, create a read-only service account, store its token in the keychain or host, and read secrets at runtime with `op read` and `op run`.
 - `meta-ad-recon`: says outright to use a logged-out browser on the public Ad Library, never Apify, Foreplay or another paid scraper even when one is connected, and why a plain fetch and Meta's API don't work for Australian ads.
 

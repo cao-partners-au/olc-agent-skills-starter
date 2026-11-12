@@ -1,10 +1,11 @@
-40b03ee36bcb107eabc0579403480c687bad7f28 skills/1password-secrets/SKILL.md
+3e4e904c94703a07ef640c56b16bfb871c3095c5 skills/karpathy-council/README.md
+e37b54270a9d0b399288f63b15529701d32cb87d skills/karpathy-council/SKILL.md
 04d484ccae2f5e3d6b9da563209158ea81c43fed .githooks/pre-commit
 bb1606d26c145d09c4cb69d51c8fa13bc193c679 .gitignore
-84fdf97daaae16e79aa7d636d08e4377ce779097 CHANGELOG.md
-942799ac9080d963e499ebafbc9b4bf5181a7908 HOUSEKEEPING.md
+e30ebcf3a6f4049729c27a12ff21d2a36194147b CHANGELOG.md
+c1a3840eb8a899e5361f9ad4fdba2f693378586e HOUSEKEEPING.md
 52159f4211fbe63d3a6d7dd2208df83791823b72 LICENSE
-3b483a3d574d363af89119ea2356c3345588676b README.md
+2d68af162b1061cb982ffd74f70c8214d1027293 README.md
 b4205bb4ad48d6463a84241d4bb22bdfddd3bc9e VETTING-THIRD-PARTY-SKILLS.md
 4257d5f5b1529d86a1b11635d0727b381b5852a8 agent-rules/AGENT-RULES.md
 08c3c1a69efdc8fb3e54de0d7a40ffbeafb15364 agent-rules/README.md
@@ -23,6 +24,7 @@ c46aaa9eef6711db5706e7a1b5ab464ef7b8163c integrations/rea/README.md
 f0b27281f6116558f39fccfd18207d16c91ed0ab scripts/maintain.sh
 fcc2bbca31505b7dfa3738a072fa733aacdb10eb scripts/setup-maintenance-macos.sh
 15190013aa702fb6dc51ffb7e8093ec4d2764831 scripts/setup-ollama-macos.sh
+cbdfedd5c9f0de08b1703ea315690b593d76366e skills/1password-secrets/SKILL.md
 4adfde131ad9da2424cc03e98dd906608f6b8479 skills/_template/SKILL.md
 ee84687ea1d484fbb9c4994562087720cbc2e3b2 skills/ad-pixel-funnel/README.md
 2279290fd49b496ecddbc2a82854a150fa6c8113 skills/ad-pixel-funnel/SKILL.md

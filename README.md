@@ -4,6 +4,12 @@ Your own home for AI agent skills. One private repo that holds every skill you u
 
 A skill is a folder with a `SKILL.md` file: plain instructions your agent loads when a task matches. This repo uses the open Agent Skills format, so the same folder works in every tool that supports it.
 
+> **Important: make your own copy, don't rely on this one.** The safest way to use this repo is
+> to copy it into your own private repository (step 1 below) and use only your copy. This starter
+> is public for a limited time and will be made private again for security. Don't link to it,
+> bookmark it as your source, or build anything that depends on it staying available. Once it goes
+> private, your copy keeps working exactly as it is; only the automatic starter updates stop.
+
 ## Get started (5 minutes)
 
 1. **Make your own copy.** Click **Use this template** (top right) and choose **Create a new repository**. Set it to **Private**. This gives you a clean copy you own, with no link back to this one.
@@ -63,6 +69,7 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | `skills/write-skill` | Creates or improves a skill in this repo, in the right format |
 | `skills/ponytail` | Coding rules: the smallest change that fully solves the task ([guide](integrations/ponytail/README.md)) |
 | `skills/_template` | A blank skill to copy |
+| `skills/karpathy-council` | Runs a big decision past five advisors with different thinking styles, then a chairman's verdict |
 | `skills/1password-secrets` | Keep keys and passwords in 1Password, and give agents read-only access through a service account |
 | `skills/meta-*`, `ad-pixel-funnel`, `marketing-roas`, `cac-and-conversion` | Meta ads: build, review weekly, health check, pixel and conversions setup, return on ad spend |
 | `skills/google-ads-*` | Google Ads campaign launch and conversion tracking |

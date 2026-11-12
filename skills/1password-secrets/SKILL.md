@@ -11,13 +11,14 @@ a chat, a file, a skill or a git repo. When a key changes, you change it once in
 
 ## Before you start
 
-- **A 1Password business account** (Business or Teams). Service accounts are a business
-  feature; if you're on an Individual or Families plan, check your plan first.
-- **1Password CLI (`op`)** installed: `brew install 1password-cli` on a Mac, then check `op --version`.
-- **The desktop app's CLI integration** switched on (Settings, Developer, "Integrate with
+- **Any 1Password account.** Service accounts work on Individual, Families, Teams and Business
+  plans; Business gets much higher usage limits (see Gotchas).
+- **1Password CLI (`op`) version 2.18.0 or later** (service accounts need it):
+  `brew install 1password-cli` on a Mac, then check `op --version`.
+- **The desktop app's CLI integration** switched on (Settings > Developer > "Integrate with
   1Password CLI"), so `op` signs in with Touch ID as the person. Check with `op whoami`.
-- Creating vaults and service accounts needs an **owner or administrator**. If `op` says you
-  don't have permission, stop and ask the account owner.
+- Creating service accounts needs permission to manage them in your account (normally the owner
+  or an administrator). If `op` says you don't have permission, stop and ask the account owner.
 
 ## The model
 
@@ -29,8 +30,9 @@ a chat, a file, a skill or a git repo. When a key changes, you change it once in
 | Service account | A robot login that can only read the vaults you name | Agents and scheduled jobs |
 | `OP_SERVICE_ACCOUNT_TOKEN` | The service account's key. Unlocks only its vaults | Kept in the computer's keychain or the host's secret store, never in a file |
 
-Service accounts can never see Personal, Private or Employee vaults. That is the point: an agent
-only ever sees what you deliberately put in its vault.
+Service accounts can never see your built-in Personal, Private or Employee vault, or the default
+Shared vault. That is the point: an agent only ever sees what you deliberately put in a vault you
+created for it. You can have up to 100 service accounts.
 
 ## How to do it
 
@@ -51,7 +53,7 @@ Use one of these:
 - **A template, from the command line:**
   ```bash
   op item template get "API Credential" --out-file /tmp/item.json
-  # edit /tmp/item.json: set the title and the "credential" field value
+  # edit /tmp/item.json: set "title", and the "value" of the field with "id": "credential"
   op item create --vault "Agents - Marketing" --template /tmp/item.json
   rm -P /tmp/item.json   # delete the filled-in template straight away (rm -P overwrites first on macOS)
   ```
@@ -87,6 +89,8 @@ and load it only for the command that needs it:
 export OP_SERVICE_ACCOUNT_TOKEN="$(security find-generic-password -a "$USER" -s op-sa-marketing-agents -w)"
 ```
 
+Check it works: `op user get --me` should show `Type: SERVICE_ACCOUNT`.
+
 **On a hosting platform** (Railway, Render, GitHub Actions and similar): add
 `OP_SERVICE_ACCOUNT_TOKEN` as a secret variable in that platform's settings. It is the only
 secret the platform needs to hold.
@@ -100,7 +104,9 @@ secret the platform needs to hold.
   XERO_CLIENT_SECRET=op://Agents - Marketing/Xero app/client secret
   ```
   then run `op run --env-file=.env -- python3 report.py`. The secrets exist only inside that
-  process, and `op run` masks them if they're printed.
+  process, and `op run` masks them if they're printed (they show as `<concealed by 1Password>`).
+  To use one in a shell command, wrap it so your shell doesn't expand it first:
+  `op run --env-file=.env -- sh -c 'curl -H "Authorization: Bearer $META_ACCESS_TOKEN" ...'`
 - **A config file that needs real values:** `op inject -i config.tpl -o config.yml`, and keep
   `config.yml` out of git.
 
@@ -125,13 +131,24 @@ In skills, always name the reference or the environment variable, never the valu
 - **"isn't a vault in this account" or "item not found":** the service account wasn't granted that
   vault, or the vault or item was renamed. References use names, so renaming breaks them. Prefer
   stable names, or use IDs in the reference (`op://<vault-id>/<item-id>/<field>`).
-- **Spaces in names:** quote the whole reference. `op://Agents - Marketing/...` works when quoted.
+- **Names in references:** letters, numbers, `-`, `_`, `.` and spaces are fine (quote the whole
+  reference if there's a space). Anything else, such as `&` or `/` in a name, must be referenced by
+  ID instead. References are not case-sensitive.
 - **Field names differ by item type:** an API Credential's value is `credential`, a Login's is
   `password`. Check with `op item get "<item>" --vault "<vault>" --format json` (as a person) and
   read the field labels, not the values.
-- **Service account access is fixed at creation.** To add a vault later, create a new service
-  account with the extra vault, swap the token, then delete the old one.
-- **Rate limits:** service accounts have hourly read limits. Read a secret once per run, not inside
-  a loop.
+- **Service account access is fixed at creation** (1Password calls it immutable). To add a vault
+  later, create a new service account with the extra vault, swap the token, then delete the old one.
+- **More than one vault:** if a service account can see several vaults, `op item` commands need
+  `--vault`.
+- **Usage limits** (per service account per hour, and per account per day):
+  | Plan | Reads per hour | Writes per hour | Per day, whole account |
+  |---|---|---|---|
+  | Business | 10,000 | 1,000 | 50,000 |
+  | Teams | 1,000 | 100 | 5,000 |
+  | Individual, Families | 1,000 | 100 | 1,000 |
+
+  Read each secret once per run, never inside a loop. Using IDs instead of names in references also
+  cuts the number of requests.
 - **Expired token:** everything fails at once on the expiry date. Rotate early and keep the expiry
   date in your calendar.

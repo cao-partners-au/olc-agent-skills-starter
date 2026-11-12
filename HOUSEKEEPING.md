@@ -2,6 +2,11 @@
 
 A skills repo stays useful only if it stays tidy. These rules keep it that way.
 
+## 0. Use your own copy
+
+Copy this starter into your own private repository and work only from that copy. The starter
+will be made private again for security, so never depend on it being reachable.
+
 ## 1. No secrets, ever
 
 - API keys, tokens, passwords and private links never go in a skill or anywhere in this repo.
