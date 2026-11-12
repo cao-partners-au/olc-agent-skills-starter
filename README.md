@@ -69,6 +69,12 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | `skills/write-skill` | Creates or improves a skill in this repo, in the right format |
 | `skills/ponytail` | Coding rules: the smallest change that fully solves the task ([guide](integrations/ponytail/README.md)) |
 | `skills/_template` | A blank skill to copy |
+| `skills/au-employment-law` | Australian employment law reference: notice, unfair dismissal, IP ownership, restraints, super and Payday Super, with 2026-27 figures. Not legal advice |
+| `skills/pre-meeting-brief` | A one-glance brief on a company before a meeting, from its name or website |
+| `skills/meeting-action-items` | Turns meeting notes into decisions, owners and tasks |
+| `skills/email-inbox-triage` | Sorts an inbox by priority and drafts replies for you to approve |
+| `skills/weekly-review-planning` | Weekly reset: commitments, stalled work, next week's plan |
+| `skills/google-workspace-dwd-setup` | Sets up Google Workspace so agents can safely access Gmail, Calendar and Drive across your domain |
 | `skills/site-analytics` | Website analytics: joins Plausible and Microsoft Clarity to show why pages convert or don't, and sets both up |
 | `skills/karpathy-council` | Runs a big decision past five advisors with different thinking styles, then a chairman's verdict |
 | `skills/1password-secrets` | Keep keys and passwords in 1Password, and give agents read-only access through a service account |

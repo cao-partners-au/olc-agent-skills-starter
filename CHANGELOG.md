@@ -4,6 +4,7 @@ Note notable changes here, newest first.
 
 ## Skills
 
+- New: `au-employment-law` (figures checked for 2026-27, including Payday Super and the draft non-compete ban), `pre-meeting-brief`, `meeting-action-items`, `email-inbox-triage`, `weekly-review-planning` (the last three by Hermes Agent, MIT licence), and `google-workspace-dwd-setup`.
 - `site-analytics`: new. Plausible plus Microsoft Clarity reporting, setup guide and optional daily history.
 - gbrain guide: explains it's optional, and that it shines when you use more than one AI tool on the same project.
 - `karpathy-council`: new. Five advisors, anonymous peer review and a chairman's verdict for high-stakes decisions.
