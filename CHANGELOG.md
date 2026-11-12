@@ -4,6 +4,8 @@ Note notable changes here, newest first.
 
 ## Skills
 
+- `site-analytics`: new. Plausible plus Microsoft Clarity reporting, setup guide and optional daily history.
+- gbrain guide: explains it's optional, and that it shines when you use more than one AI tool on the same project.
 - `karpathy-council`: new. Five advisors, anonymous peer review and a chairman's verdict for high-stakes decisions.
 - `1password-secrets`: checked against 1Password's official docs and tested reading secrets with a real service account (`op read`, `op run`, `op inject`). Adds plan limits, the minimum CLI version, and which vaults service accounts can't reach.
 - README and HOUSEKEEPING: use your own private copy; this starter will be made private again.

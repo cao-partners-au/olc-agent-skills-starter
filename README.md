@@ -69,6 +69,7 @@ Ask your agent to "write a new skill for X" and it will use the `write-skill` sk
 | `skills/write-skill` | Creates or improves a skill in this repo, in the right format |
 | `skills/ponytail` | Coding rules: the smallest change that fully solves the task ([guide](integrations/ponytail/README.md)) |
 | `skills/_template` | A blank skill to copy |
+| `skills/site-analytics` | Website analytics: joins Plausible and Microsoft Clarity to show why pages convert or don't, and sets both up |
 | `skills/karpathy-council` | Runs a big decision past five advisors with different thinking styles, then a chairman's verdict |
 | `skills/1password-secrets` | Keep keys and passwords in 1Password, and give agents read-only access through a service account |
 | `skills/meta-*`, `ad-pixel-funnel`, `marketing-roas`, `cac-and-conversion` | Meta ads: build, review weekly, health check, pixel and conversions setup, return on ad spend |

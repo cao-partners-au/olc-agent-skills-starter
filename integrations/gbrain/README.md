@@ -2,6 +2,8 @@
 
 **What it is.** A searchable memory your AI agent can read and write. It stores pages (notes, decisions, documents and, optionally, your code), splits them into chunks, and indexes them by **meaning**, so your agent can ask "what did we decide about refunds?" and find the right note even when the wording differs. Your agent reaches it through tools (`search`, `query`, and saving new pages). Made by Garry Tan. Source: [garrytan/gbrain](https://github.com/garrytan/gbrain).
 
+**Do you need it?** Not strictly. Your skills and agent work without it. It's an extra memory layer that can make coding more efficient and may use less of your AI tool's session limits, because your agent looks things up instead of re-reading files. Where gbrain really shines is when you use **more than one AI tool on the same project or repo**: your gotchas, preferences and rules move with you. If you start a project in Claude Code and later switch to Codex, Codex finds everything Claude Code learned.
+
 **What it's good for**
 - Remembering decisions, fixes and "gotchas" across sessions and AI tools.
 - Searching your notes and documents by meaning, not exact words.
