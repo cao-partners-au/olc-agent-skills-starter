@@ -1,6 +1,11 @@
 ---
 name: email-inbox-triage
-description: "Triage an inbox: prioritize threads, draft replies safely."
+description: >-
+  Triage an email inbox: sort threads into what needs you today, what can wait and what can be
+  ignored, flag anything urgent or from a customer, and draft replies for you to review. It never
+  sends without your approval. Use when asked to "go through my inbox", "what needs a reply",
+  "triage my email", "draft replies to these", "what did I miss", "clear my inbox", or "which
+  customer emails need answering".
 version: 0.1.0
 author: Ben Barclay (benbarclay), Hermes Agent
 license: MIT

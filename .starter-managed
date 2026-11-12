@@ -1,10 +1,3 @@
-20c8a42af46d415952cb28be5298663400ed131d skills/au-employment-law/SKILL.md
-97fb6a4efd7e5cc108b9aa383fb9a39ea4c1c80b skills/au-employment-law/references/termination-letter-checklist.md
-f35cb4e4e8e18508c22e2701b753aef6042f89de skills/email-inbox-triage/SKILL.md
-6202dbe3509e5edff69b5ff816b10fc903f1c95c skills/google-workspace-dwd-setup/SKILL.md
-56962c6c57f093f737c488bd0ada9f1a509831ed skills/meeting-action-items/SKILL.md
-1f317318014bf6f9c1beb1d77c7e4e1c6ec9a3f5 skills/pre-meeting-brief/SKILL.md
-fb62cd8c000ab2c7c16ba307a94dc93b3e92059e skills/weekly-review-planning/SKILL.md
 04d484ccae2f5e3d6b9da563209158ea81c43fed .githooks/pre-commit
 bb1606d26c145d09c4cb69d51c8fa13bc193c679 .gitignore
 90c44d0a1645f4beb91a34a22b3a321700441c2c CHANGELOG.md
@@ -33,16 +26,21 @@ cbdfedd5c9f0de08b1703ea315690b593d76366e skills/1password-secrets/SKILL.md
 4adfde131ad9da2424cc03e98dd906608f6b8479 skills/_template/SKILL.md
 ee84687ea1d484fbb9c4994562087720cbc2e3b2 skills/ad-pixel-funnel/README.md
 2279290fd49b496ecddbc2a82854a150fa6c8113 skills/ad-pixel-funnel/SKILL.md
+20c8a42af46d415952cb28be5298663400ed131d skills/au-employment-law/SKILL.md
+97fb6a4efd7e5cc108b9aa383fb9a39ea4c1c80b skills/au-employment-law/references/termination-letter-checklist.md
 6d6120f75b1e020df049d079d8ad75f7da40787b skills/cac-and-conversion/README.md
 a6eb6c8ac5f408b3b38ece4b616d3d279b5acb40 skills/cac-and-conversion/SKILL.md
+1391eda1c7a522ed820f79c124381baecaf8e09c skills/email-inbox-triage/SKILL.md
 d6337c5460bfb6857b1a2ea88895f89ec31aaf22 skills/google-ads-campaign-launch/README.md
 3cf29e26c8d1a32ad18406e3123aa237a0ead7fe skills/google-ads-campaign-launch/SKILL.md
 3e37bb302dfd8ceec199c7e23a7fa0f6bd09ee5f skills/google-ads-conversions/README.md
 510ccaa8eca3f749dedf127f2640aebe510ca6b2 skills/google-ads-conversions/SKILL.md
+6202dbe3509e5edff69b5ff816b10fc903f1c95c skills/google-workspace-dwd-setup/SKILL.md
 3e4e904c94703a07ef640c56b16bfb871c3095c5 skills/karpathy-council/README.md
 e37b54270a9d0b399288f63b15529701d32cb87d skills/karpathy-council/SKILL.md
 673059e8be087615f41275214caa897f45c5fbb0 skills/marketing-roas/README.md
 ae0e9785167f42335dba4da3f28bb91a383f1242 skills/marketing-roas/SKILL.md
+d572b3f3bd70e7885acf6cb8d69c2025e9f41a67 skills/meeting-action-items/SKILL.md
 2cbfb0e8369d465dbbf8149e3ac905bcbe3964f0 skills/meta-account-healthcheck/README.md
 da37227469d1556c724eaccd55d8d78a41587e24 skills/meta-account-healthcheck/SKILL.md
 429a0b758563f0cb6c5db9a01862a1983b80acbb skills/meta-account-healthcheck/scripts/healthcheck.py
@@ -61,6 +59,7 @@ b4e5df35b737958654aca38cb36e79b5edd25e74 skills/meta-weekly-review/README.md
 715d483338cea4365f0d91a27799cf61226d6bcf skills/ponytail/LICENSE
 d64edd32265ba21cbf5270158f04e97d96925f27 skills/ponytail/SKILL.md
 d0da47e4cb85892b826effc985bdb38688b824d3 skills/ponytail/SOURCE.md
+1f317318014bf6f9c1beb1d77c7e4e1c6ec9a3f5 skills/pre-meeting-brief/SKILL.md
 0d9f1bc9e2a793feef5bc729e75bb2f4edbe1626 skills/site-analytics/SKILL.md
 4b0806d240762cd35ab9d98821aab3c646f9536f skills/site-analytics/example.env
 1f2488c0ebbdb58535ef62a2bfd812c92c1093af skills/site-analytics/references/history-tables.sql
@@ -69,4 +68,5 @@ d0da47e4cb85892b826effc985bdb38688b824d3 skills/ponytail/SOURCE.md
 39678004b2dd3a261bd27d90557ade26044600f6 skills/site-analytics/scripts/snapshot.py
 cab89952039963cce91e6537d4162269543cecd6 skills/tiktok-ads-mcp/README.md
 7da791f0c650daddbd95cec9ed5987a86b781aee skills/tiktok-ads-mcp/SKILL.md
+986c9ea4280998602fad3afac710f6824370ebea skills/weekly-review-planning/SKILL.md
 748405174b330b0413cb6fc9bc7f630029d39411 skills/write-skill/SKILL.md

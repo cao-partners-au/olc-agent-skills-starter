@@ -1,6 +1,12 @@
 ---
 name: meeting-action-items
-description: "Turn meeting notes into cited decisions, owners, tickets."
+description: >-
+  Turn meeting notes, transcripts or recordings (Fireflies, Otter, Plaud, Teams, Zoom, Google
+  Meet) into decisions, action items with a named owner and due date, and open questions, each
+  linked to where it was said, then create or update the tasks in your task tool. Use when asked
+  to "turn this meeting into tasks", "what did we agree", "who owns what from the meeting",
+  "action items from yesterday's call", "follow-ups from the meeting", or "which meeting actions
+  are overdue".
 version: 0.1.0
 author: Ben Barclay (benbarclay), Hermes Agent
 license: MIT

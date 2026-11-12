@@ -1,6 +1,11 @@
 ---
 name: weekly-review-planning
-description: "Weekly reset: commitments, stalled work, next-week plan."
+description: >-
+  A weekly reset: gathers what you committed to this week from your calendar, email, notes and
+  task tools, shows what got done, what stalled or slipped and who is waiting on you, then drafts
+  a realistic plan and priorities for next week. Use when asked for a "weekly review", "plan my
+  week", "what did I get done this week", "what's slipping", "what's waiting on me", a "Friday
+  wrap-up", or to "set my priorities for next week".
 version: 0.1.0
 author: Ben Barclay (benbarclay), Hermes Agent
 license: MIT
