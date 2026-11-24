@@ -21,23 +21,28 @@ TARGETS=(
 )
 
 strip_block() { awk -v s="$START" -v e="$END" '$0==s{skip=1;next} $0==e{skip=0;next} !skip' "$1"; }
+# Trailing blank lines dropped (kept exactly as written anywhere else), so re-runs don't add one each time.
+trim_end() { awk 'NF{for(i=1;i<=n;i++)print b[i];n=0;print;next}{b[++n]=$0}'; }
+# A start marker without its end marker would make strip_block delete everything after it: refuse instead.
+markers_ok() { [ ! -f "$1" ] || [ "$(grep -cxF "$START" "$1")" = "$(grep -cxF "$END" "$1")" ]; }
 
 for entry in "${TARGETS[@]}"; do
   IFS="|" read -r name home file <<< "$entry"
   [ -d "$home" ] || continue
+  if ! markers_ok "$file"; then echo "$name: $file has a start marker without its end marker (or the reverse); fix it by hand, skipped" >&2; continue; fi
   case "$MODE" in
     --dry-run)
       if [ -f "$file" ] && grep -qF "$START" "$file"; then echo "$name: would update the rules block in $file"
       else echo "$name: would add the rules block to $file"; fi ;;
     --remove)
       [ -f "$file" ] && grep -qF "$START" "$file" || continue
-      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S)"
+      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S).$$"
       strip_block "$file" > "$file.tmp" && mv "$file.tmp" "$file"
       echo "$name: removed the rules block from $file" ;;
     add)
       touch "$file"
-      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S)"
-      { strip_block "$file"; printf '\n%s\n' "$START"; cat "$RULES"; printf '%s\n' "$END"; } > "$file.tmp"
+      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S).$$"
+      { strip_block "$file" | trim_end; printf '\n%s\n' "$START"; cat "$RULES"; printf '%s\n' "$END"; } > "$file.tmp"
       mv "$file.tmp" "$file"
       echo "$name: rules added to $file (backup saved next to it)" ;;
     *) echo "Usage: ./scripts/add-agent-rules.sh [--dry-run|--remove]"; exit 1 ;;

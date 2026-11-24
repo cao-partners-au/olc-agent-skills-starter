@@ -14,7 +14,7 @@ We deliberately took **only the core skill file**, not the full plugin. The plug
 
 ## Using it
 
-- It switches on for coding tasks, or when you say "ponytail", "be lazy" or "simplest solution".
+- It does **not** switch itself on. It runs when you type `/ponytail`, or when your agent loads it. The [agent rules](../../agent-rules/README.md) tell your agent to load it at the start of every coding task. Without them it is rarely used: in our own Claude Code trial it was installed for two weeks and never loaded once.
 - Change the level with `/ponytail lite`, `/ponytail full` (default) or `/ponytail off`.
 - **Avoid `ultra`.** It pushes back on what you asked for before building it. If you want your agent to do exactly what you say, that gets in the way.
 
