@@ -54,23 +54,30 @@ starter_update() {
     [ "$newsha" = "$oldsha" ] && continue                       # starter didn't change it
     if [ "$cursha" = "$oldsha" ] || { [ "$cursha" = "none" ] && [ -z "$oldsha" ]; }; then
       log "starter: updating $path"
-      if [ "$DRY" = 0 ]; then mkdir -p "$(dirname "$REPO/$path")"; cp "$tmp/up/$path" "$REPO/$path"; fi
+      if [ "$DRY" = 0 ]; then mkdir -p "$(dirname "$REPO/$path")"; cp "$tmp/up/$path" "$REPO/$path.new.$$" && mv "$REPO/$path.new.$$" "$REPO/$path"; fi # swapped in whole: bash reads a running script (this one) from disk as it goes
       changed=1
     elif [ "$cursha" != "$newsha" ]; then
       skipped+=("$path")
     fi
-  done < <(cd "$tmp/up" && git ls-files -s | awk '$4!=".starter-managed"{print $2, $4}')
+  done < <(cd "$tmp/up" && git ls-files -s | awk '$4!=".starter-managed" && $4!="agent-rules/AGENT-RULES.local.md"{print $2, $4}') # the local rules file is always yours
   if [ "$DRY" = 0 ]; then
     cp "$tmp/up/.starter-managed" "$manifest" 2>/dev/null || true
     [ -x "$REPO/install.sh" ] && chmod +x "$REPO"/install.sh "$REPO"/scripts/*.sh "$REPO"/.githooks/* 2>/dev/null
     if [ "$changed" = 1 ] && [ -d "$REPO/.git" ]; then
       git -C "$REPO" add -A >>"$LOG" 2>&1 && git -C "$REPO" commit -qm "Update from starter repo" >>"$LOG" 2>&1 || true
       "$REPO/install.sh" >>"$LOG" 2>&1 || true
-      "$REPO/scripts/add-agent-rules.sh" >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
     fi
+    # Every run, not only after a starter update: picks up edits to your AGENT-RULES.local.md, and keeps telling
+    # you about a file it can't update. A file already up to date is left alone (no new backup).
+    "$REPO/scripts/add-agent-rules.sh" >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
   fi
-  [ "${#skipped[@]}" -gt 0 ] && warn "starter has updates to files you've edited, left as yours: ${skipped[*]}"
-  case " ${skipped[*]} " in *" agent-rules/AGENT-RULES.md "*) warn "you've edited agent-rules/AGENT-RULES.md, so new rules can't reach you: move your own lines to agent-rules/AGENT-RULES.local.md, then ask your agent to replace AGENT-RULES.md with the current one from github.com/cao-partners-au/olc-agent-skills-starter" ;; esac
+  if [ "${#skipped[@]}" -gt 0 ]; then  # guarded: an empty array under set -u is fatal in macOS /bin/bash 3.2
+    warn "starter has updates to files you've edited, left as yours: ${skipped[*]}"
+    case " ${skipped[*]} " in
+      *" agent-rules/AGENT-RULES.md "*)
+        warn "you've edited agent-rules/AGENT-RULES.md, so new rules can't reach you: move your own lines to agent-rules/AGENT-RULES.local.md, then ask your agent to replace AGENT-RULES.md with the current one from github.com/cao-partners-au/olc-agent-skills-starter" ;;
+    esac
+  fi
   rm -rf "$tmp"
 }
 starter_update
