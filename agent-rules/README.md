@@ -2,7 +2,7 @@
 
 Installing a skill makes it available. These rules tell your agent **when** to use the integrations instead of improvising: gstack's `/review` on every pull request, `/qa` for testing, `/investigate` for debugging, ponytail for coding, gbrain for memory, and the limits on REA.
 
-The rules are in [AGENT-RULES.md](AGENT-RULES.md). Edit them to suit you before adding them.
+The rules are in [AGENT-RULES.md](AGENT-RULES.md). **Don't edit that file**: improvements to it reach you automatically through the daily maintenance, but only while it is unedited. Put your own rules in `AGENT-RULES.local.md` in this folder (create it). They are added after the shared rules, and the starter never touches that file.
 
 ## Add them to your AI tools
 

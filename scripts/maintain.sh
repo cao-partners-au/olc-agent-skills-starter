@@ -66,10 +66,11 @@ starter_update() {
     if [ "$changed" = 1 ] && [ -d "$REPO/.git" ]; then
       git -C "$REPO" add -A >>"$LOG" 2>&1 && git -C "$REPO" commit -qm "Update from starter repo" >>"$LOG" 2>&1 || true
       "$REPO/install.sh" >>"$LOG" 2>&1 || true
-      "$REPO/scripts/add-agent-rules.sh" >>"$LOG" 2>&1 || true
+      "$REPO/scripts/add-agent-rules.sh" >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
     fi
   fi
   [ "${#skipped[@]}" -gt 0 ] && warn "starter has updates to files you've edited, left as yours: ${skipped[*]}"
+  case " ${skipped[*]} " in *" agent-rules/AGENT-RULES.md "*) warn "you've edited agent-rules/AGENT-RULES.md, so new rules can't reach you: move your own lines to agent-rules/AGENT-RULES.local.md, then ask your agent to replace AGENT-RULES.md with the current one from github.com/cao-partners-au/olc-agent-skills-starter" ;; esac
   rm -rf "$tmp"
 }
 starter_update
