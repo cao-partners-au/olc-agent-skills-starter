@@ -5,6 +5,7 @@
 #   ./scripts/add-agent-rules.sh            add or update
 #   ./scripts/add-agent-rules.sh --dry-run  show which files would change
 #   ./scripts/add-agent-rules.sh --remove   take the block out again
+#   ./scripts/add-agent-rules.sh --if-present  update only files that already have the block (daily maintenance)
 set -euo pipefail
 
 MODE="${1:-add}"
@@ -36,24 +37,28 @@ markers_ok() {
 }
 SKIPPED=0; WROTE=0
 tmp=""; trap 'rm -f "${tmp:-}"' EXIT   # a failed write never leaves a temp file behind
-skip() { echo "$1" >&2; SKIPPED=1; }
+skip() { echo "$1" >&2; SKIPPED=1; rm -f "${tmp:-}"; tmp=""; }
 # A marker line inside the local rules would end the block early and lock the file on the next run.
-local_ok() { [ ! -f "$LOCAL_RULES" ] || ! awk -v s="$START" -v e="$END" '{l=$0; sub(/\r$/,"",l)} l==s||l==e{f=1} END{exit !f}' "$LOCAL_RULES"; }
+local_ok() { [ ! -e "$LOCAL_RULES" ] || { [ -r "$LOCAL_RULES" ] && ! awk -v s="$START" -v e="$END" '{l=$0; sub(/\r$/,"",l)} l==s||l==e{f=1} END{exit !f}' "$LOCAL_RULES"; }; }
 # Put $tmp in place of $1: nothing written (and no backup) when the content is unchanged; a backup first
 # otherwise; the file's permissions kept; a symlinked file written through, so the file it points to updates.
 # Called inside an if, where set -e is off, so each step returns on failure itself.
 put() {
   if [ -f "$1" ] && cmp -s "$tmp" "$1"; then rm -f "$tmp"; return 0; fi
   if [ -f "$1" ]; then
+    # GNU stat first: on Linux `stat -f` means "filesystem" and prints a report instead of failing.
+    mode="$(stat -c %a "$1" 2>/dev/null || stat -f %Lp "$1")" || return 1
+    chmod "$mode" "$tmp" || return 1
     cp -p "$1" "$1.bak.$(date +%Y%m%d%H%M%S).$$" || return 1
-    chmod "$(stat -f %Lp "$1" 2>/dev/null || stat -c %a "$1")" "$tmp" || return 1
   else chmod 644 "$tmp" || return 1; fi
   if [ -L "$1" ]; then cat "$tmp" > "$1" || return 1; rm -f "$tmp"; else mv "$tmp" "$1" || return 1; fi
   WROTE=1
 }
 
+IF_PRESENT=0; [ "$MODE" = --if-present ] && { MODE=add; IF_PRESENT=1; }
+if [ "$MODE" = add ] && ! [ -r "$RULES" ]; then echo "$RULES is missing or can't be read; nothing was changed" >&2; exit 3; fi
 if [ "$MODE" = add ] && ! local_ok; then
-  echo "$LOCAL_RULES contains a rules marker line; take it out, nothing was changed" >&2; exit 3
+  echo "$LOCAL_RULES can't be read or contains a rules marker line; fix it, nothing was changed" >&2; exit 3
 fi
 
 for entry in "${TARGETS[@]}"; do
@@ -73,21 +78,25 @@ for entry in "${TARGETS[@]}"; do
       if strip_block "$file" | trim_end > "$tmp" && put "$file"; then echo "$name: removed the rules block from $file"
       else skip "$name: couldn't write $file; it is unchanged"; fi ;;
     add)
+      # --if-present (the daily maintenance): only refresh a block you already have, so --remove sticks.
+      [ "$IF_PRESENT" = 1 ] && ! has_block "$file" && continue
+      existed=0; [ -f "$file" ] && existed=1
       tmp="$(mktemp "$file.XXXXXX")" || { skip "$name: can't write next to $file; skipped"; continue; } # its own temp file, so two runs at once can't clash
       # awk 1: each file ends in a newline, so a rules file without one can't glue itself to the end marker.
-      if ! { { [ ! -f "$file" ] || strip_block "$file" | trim_end; }; printf '\n%s\n' "$START"; awk 1 "$RULES"
-             if [ -f "$LOCAL_RULES" ]; then printf '\n'; awk 1 "$LOCAL_RULES"; fi
-             printf '%s\n' "$END"; } > "$tmp"; then skip "$name: couldn't write next to $file; it is unchanged"; continue; fi
+      # Chained with &&: inside an if, set -e is off and a group only reports its last command, so a failed
+      # read (an unreadable rules file) would otherwise write an empty block over your rules.
+      if ! { { [ ! -f "$file" ] || { strip_block "$file" | trim_end; }; } && printf '\n%s\n' "$START" && awk 1 "$RULES" &&
+             { [ ! -f "$LOCAL_RULES" ] || { printf '\n' && awk 1 "$LOCAL_RULES"; }; } && printf '%s\n' "$END"; } > "$tmp"; then skip "$name: couldn't write next to $file; it is unchanged"; continue; fi
       markers_ok "$tmp" || { skip "$name: the new block came out malformed; $file is unchanged"; continue; }
       w=$WROTE; WROTE=0
       if put "$file"; then
-        if [ "$WROTE" = 1 ]; then echo "$name: rules added to $file (backup saved next to it)"; else echo "$name: rules already up to date in $file"; fi
+        if [ "$WROTE" = 1 ]; then echo "$name: rules added to $file$([ "$existed" = 1 ] && echo " (backup saved next to it)")"; else echo "$name: rules already up to date in $file"; fi
       else skip "$name: couldn't write $file; it is unchanged"; fi
       [ "$w" = 1 ] && WROTE=1 ;;
-    *) echo "Usage: ./scripts/add-agent-rules.sh [--dry-run|--remove]"; exit 1 ;;
+    *) echo "Usage: ./scripts/add-agent-rules.sh [--dry-run|--remove|--if-present]"; exit 1 ;;
   esac
 done
 # Exit 3 when a file was skipped, so the daily maintenance tells you instead of failing quietly.
-[ "$SKIPPED" = 1 ] && exit 3
 [ "$MODE" = "add" ] && [ "$WROTE" = 1 ] && echo "Restart your AI tools to load the rules."
+[ "$SKIPPED" = 1 ] && exit 3
 exit 0

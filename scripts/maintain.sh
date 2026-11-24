@@ -67,9 +67,6 @@ starter_update() {
       git -C "$REPO" add -A >>"$LOG" 2>&1 && git -C "$REPO" commit -qm "Update from starter repo" >>"$LOG" 2>&1 || true
       "$REPO/install.sh" >>"$LOG" 2>&1 || true
     fi
-    # Every run, not only after a starter update: picks up edits to your AGENT-RULES.local.md, and keeps telling
-    # you about a file it can't update. A file already up to date is left alone (no new backup).
-    "$REPO/scripts/add-agent-rules.sh" >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
   fi
   if [ "${#skipped[@]}" -gt 0 ]; then  # guarded: an empty array under set -u is fatal in macOS /bin/bash 3.2
     warn "starter has updates to files you've edited, left as yours: ${skipped[*]}"
@@ -81,6 +78,12 @@ starter_update() {
   rm -rf "$tmp"
 }
 starter_update
+# Every run, even when the starter can't be reached: picks up edits to your AGENT-RULES.local.md and keeps telling
+# you about a file it can't update. Only files that already have the rules block (so --remove sticks); a file
+# already up to date is left alone, with no new backup.
+if [ "$DRY" = 0 ] && [ -x "$REPO/scripts/add-agent-rules.sh" ]; then
+  "$REPO/scripts/add-agent-rules.sh" --if-present >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
+fi
 
 # 2. gstack ---------------------------------------------------------------------------
 GSTACK="$HOME/.claude/skills/gstack"
