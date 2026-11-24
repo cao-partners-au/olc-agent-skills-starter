@@ -31,13 +31,14 @@ for entry in "${TARGETS[@]}"; do
       else echo "$name: would add the rules block to $file"; fi ;;
     --remove)
       [ -f "$file" ] && grep -qF "$START" "$file" || continue
-      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S)"
+      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S).$$"
       strip_block "$file" > "$file.tmp" && mv "$file.tmp" "$file"
       echo "$name: removed the rules block from $file" ;;
     add)
       touch "$file"
-      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S)"
-      { strip_block "$file"; printf '\n%s\n' "$START"; cat "$RULES"; printf '%s\n' "$END"; } > "$file.tmp"
+      cp "$file" "$file.bak.$(date +%Y%m%d%H%M%S).$$"
+      # Trailing blank lines dropped first, so each re-run doesn't add another one.
+      { strip_block "$file" | awk 'NF{for(;n;n--)print "";print;next}{n++}'; printf '\n%s\n' "$START"; cat "$RULES"; printf '%s\n' "$END"; } > "$file.tmp"
       mv "$file.tmp" "$file"
       echo "$name: rules added to $file (backup saved next to it)" ;;
     *) echo "Usage: ./scripts/add-agent-rules.sh [--dry-run|--remove]"; exit 1 ;;
