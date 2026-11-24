@@ -2,7 +2,7 @@
 
 Your own home for AI agent skills. One private repo that holds every skill you use, so they come with you when you change laptops or move between AI tools (Claude Code, Codex, Cursor, Gemini CLI, Hermes, OpenClaw and others).
 
-A skill is a folder with a `SKILL.md` file: plain instructions your agent loads when a task matches. This repo uses the open Agent Skills format, so the same folder works in every tool that supports it.
+A skill is a folder with a `SKILL.md` file: plain instructions your agent loads for a task (the agent rules below tell it to load the right one rather than rely on it loading by itself). This repo uses the open Agent Skills format, so the same folder works in every tool that supports it.
 
 > **Important: make your own copy, don't rely on this one.** The safest way to use this repo is
 > to copy it into your own private repository (step 1 below) and use only your copy. This starter
@@ -60,7 +60,7 @@ git pull                                  # get changes from your other machines
 git add -A && git commit -m "Add <skill>" && git push
 ```
 
-Ask your agent to "write a new skill for X" and it will use the `write-skill` skill to create it in the right format, inside this repo.
+Ask your agent to "write a new skill for X" and it will load the `write-skill` skill (the agent rules require it) to create it in the right format, inside this repo.
 
 ## What's included
 

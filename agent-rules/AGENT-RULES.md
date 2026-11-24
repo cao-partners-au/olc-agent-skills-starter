@@ -4,7 +4,7 @@ My skills live in my skills repo (usually `~/agent-skills`). Create and edit ski
 
 ### Load the skill, don't imitate it
 
-When a rule below names a skill, load that skill before you start (with your skill tool, or by opening and following its SKILL.md), and say which skill you loaded. Doing similar steps from memory does not count: a skill only works when it is loaded, and you can't rely on it loading by itself.
+When a rule here names a skill, load that skill before you start (with your skill tool, or by opening and following its SKILL.md), and say which skill you loaded. Doing similar steps from memory does not count: a skill only works when it is loaded, and you can't rely on it loading by itself.
 
 In some tools gstack's skills have a `gstack-` prefix (`gstack-review`, `gstack-qa`): use whichever name exists, and never substitute the tool's own built-in review command.
 
@@ -22,7 +22,7 @@ When the task matches, load the gstack skill rather than doing it ad hoc:
 
 ### Pull request review rule
 
-Before asking me to merge any pull request, in any repo, load and run the `/review` skill on it, fix or explain every finding, and include the review result when you ask me to merge. Never ask me to merge an unreviewed pull request.
+Before asking me to merge any pull request, in any repo, load and run the `/review` skill on it, fix or explain every finding, and include the review result when you ask me to merge. Never ask me to merge an unreviewed pull request. If `/review` isn't available in this tool, say so and don't ask me to merge until it has been run in a tool that has it; a manual review doesn't count.
 
 ### Coding
 
