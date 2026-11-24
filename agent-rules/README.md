@@ -21,9 +21,9 @@ It adds the rules to the global instruction file of each tool it finds:
 
 The rules sit between two marker lines, so:
 - your own instructions in those files are never touched,
-- running it again after editing `AGENT-RULES.local.md` replaces the old block rather than adding a second copy (the daily maintenance also re-applies it each day),
+- running it again after editing `AGENT-RULES.local.md` replaces the old block rather than adding a second copy (the daily maintenance also refreshes it each day, in files that already have the rules; after installing a new AI tool, run `./scripts/add-agent-rules.sh` again to add them there),
 - `./scripts/add-agent-rules.sh --remove` takes them out again.
 
-A backup of each file is saved next to it every time.
+A backup of each file is saved next to it whenever its content changes.
 
 Restart your AI tools afterwards.

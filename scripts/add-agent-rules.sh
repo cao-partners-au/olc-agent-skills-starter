@@ -64,6 +64,8 @@ fi
 for entry in "${TARGETS[@]}"; do
   IFS="|" read -r name home file <<< "$entry"
   [ -d "$home" ] || continue
+  # --if-present (daily maintenance) never touches a file without the block, so it doesn't warn about one either.
+  if [ "$IF_PRESENT" = 1 ] && { [ ! -f "$file" ] || [ ! -r "$file" ] || ! has_block "$file"; }; then continue; fi
   if { [ -e "$file" ] || [ -L "$file" ]; } && [ ! -f "$file" ]; then skip "$name: $file isn't a regular file (a folder or a broken link); skipped"; continue; fi
   if ! markers_ok "$file"; then
     skip "$name: $file can't be read, or its rules markers are missing or out of order; fix it by hand, skipped"; continue
@@ -78,8 +80,6 @@ for entry in "${TARGETS[@]}"; do
       if strip_block "$file" | trim_end > "$tmp" && put "$file"; then echo "$name: removed the rules block from $file"
       else skip "$name: couldn't write $file; it is unchanged"; fi ;;
     add)
-      # --if-present (the daily maintenance): only refresh a block you already have, so --remove sticks.
-      [ "$IF_PRESENT" = 1 ] && ! has_block "$file" && continue
       existed=0; [ -f "$file" ] && existed=1
       tmp="$(mktemp "$file.XXXXXX")" || { skip "$name: can't write next to $file; skipped"; continue; } # its own temp file, so two runs at once can't clash
       # awk 1: each file ends in a newline, so a rules file without one can't glue itself to the end marker.

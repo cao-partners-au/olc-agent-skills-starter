@@ -7,7 +7,8 @@
 #
 # What it does:
 #   1. Starter updates: refreshes files that came from the starter repo, only where you
-#      haven't edited them (your edits are never overwritten; you're told instead).
+#      haven't edited them (your edits are never overwritten; you're told instead), then
+#      refreshes the agent rules in files that already have them (add-agent-rules.sh --if-present).
 #   2. gstack: upgrades with gstack's own unattended, fast-forward-only upgrader.
 #   3. gbrain: upgrades, upgrades Bun if gbrain needs it, finishes the upgrade, rebuilds
 #      the search index.
@@ -82,7 +83,7 @@ starter_update
 # you about a file it can't update. Only files that already have the rules block (so --remove sticks); a file
 # already up to date is left alone, with no new backup.
 if [ "$DRY" = 0 ] && [ -x "$REPO/scripts/add-agent-rules.sh" ]; then
-  "$REPO/scripts/add-agent-rules.sh" --if-present >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh to see why"
+  "$REPO/scripts/add-agent-rules.sh" --if-present >>"$LOG" 2>&1 || warn "the agent rules couldn't be updated in one of your AI tools' instruction files; run ./scripts/add-agent-rules.sh --if-present to see why"
 fi
 
 # 2. gstack ---------------------------------------------------------------------------

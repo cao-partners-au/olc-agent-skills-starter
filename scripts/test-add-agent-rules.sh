@@ -30,7 +30,7 @@ chmod 644 "$R/repo/agent-rules/AGENT-RULES.local.md"
 rm "$R/repo/agent-rules/AGENT-RULES.local.md"
 
 home; printf 'x\n' > "$F"; chmod 640 "$F"; run
-[ "$(stat -f %Lp "$F" 2>/dev/null || stat -c %a "$F")" = 640 ] || fail "permissions not kept"
+[ "$(stat -c %a "$F" 2>/dev/null || stat -f %Lp "$F")" = 640 ] || fail "permissions not kept"
 home; printf 'real\n' > "$H/real.md"; rm -f "$F"; ln -s "$H/real.md" "$F"; run
 [ -L "$F" ] && grep -q "rules: start" "$H/real.md" || fail "symlink replaced instead of written through"
 home; mkdir "$F.dir" && rm -f "$F" && mkdir "$F"; mkdir -p "$H/.codex"; run
@@ -48,6 +48,8 @@ home; printf '%s\nx\n' "$E" > "$F"; mkdir -p "$H/.codex"; printf '%s\nx\n' "$E" 
 home; printf 'x\n' > "$F"; run; run --remove; run --if-present; [ "$(starts)" = 0 ] || fail "--if-present re-added removed rules"
 home; printf 'x\n' > "$F"; run; printf -- '- new\n' > "$R/repo/agent-rules/AGENT-RULES.local.md"; run --if-present
 grep -qx -- '- new' "$F" || fail "--if-present didn't refresh"; rm "$R/repo/agent-rules/AGENT-RULES.local.md"
+# --if-present stays quiet about a file it would never touch (no rules, broken link): no daily false alarm.
+home; mkdir -p "$H/.codex"; ln -s "$H/nowhere" "$H/.codex/AGENTS.md"; printf 'x\n' > "$F"; run --if-present; [ "$rc" = 0 ] || fail "--if-present warned about an untouched file"
 # The restart reminder prints when one file was written, even if another was skipped.
 home; printf 'x\n' > "$F"; mkdir -p "$H/.codex"; printf '%s\nx\n' "$E" > "$H/.codex/AGENTS.md"
 out="$(HOME="$H" /bin/bash "$R/repo/scripts/add-agent-rules.sh" 2>/dev/null || true)"; echo "$out" | grep -q Restart || fail "restart line missing"

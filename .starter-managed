@@ -6,7 +6,7 @@ c1a3840eb8a899e5361f9ad4fdba2f693378586e HOUSEKEEPING.md
 16ad41476475480db826d5bb6bcedc9accd32702 README.md
 b4205bb4ad48d6463a84241d4bb22bdfddd3bc9e VETTING-THIRD-PARTY-SKILLS.md
 412485e449ccda7ae19d8f8340621b7bf9a4a953 agent-rules/AGENT-RULES.md
-935f1645a0d8d4cee01015eef9f503777a52fae1 agent-rules/README.md
+5f73339b89dd10dfe6ee42a420e1d73bb25cb921 agent-rules/README.md
 f4b3014187fb9ae3db734e33f3398fe94646b779 docs/ad-skills/ADAPTING-TO-YOUR-STACK.md
 3414690b6d3132d4b68a7e5641febaa00464b2f5 docs/ad-skills/QUICKSTART.md
 e6cc7852c73eb064abb21ae55b5278e774410752 docs/ad-skills/README.md
@@ -17,12 +17,12 @@ fdaba3f52877ded19e4e327083458fbbd4047243 integrations/gbrain/README.md
 bf7dcc490d884e1705293ae1019fa33f18adee84 integrations/gstack/README.md
 5f51c8e4a67de1e3362097718e0e8d44404ef504 integrations/ponytail/README.md
 c46aaa9eef6711db5706e7a1b5ab464ef7b8163c integrations/rea/README.md
-f9b4c8180bf9883ded54f049ffcc0e59176c6d90 scripts/add-agent-rules.sh
+2d204269cf4335f9e59444a130c08dbc66bcc692 scripts/add-agent-rules.sh
 054a010ce2bde9a41fb94c9892c484db85673c89 scripts/build-manifest.sh
-2b341eca0a06fccc093db3c871df8ee0c2bd3f7b scripts/maintain.sh
+add18ac951b2f5009b186508bc435df93e8cebd1 scripts/maintain.sh
 fcc2bbca31505b7dfa3738a072fa733aacdb10eb scripts/setup-maintenance-macos.sh
 15190013aa702fb6dc51ffb7e8093ec4d2764831 scripts/setup-ollama-macos.sh
-ee8886dde2539280dfc2594e5fba2b4e701f6b46 scripts/test-add-agent-rules.sh
+bc08a3bf4b7b2505b69eaba7a8b5937e304864ef scripts/test-add-agent-rules.sh
 cbdfedd5c9f0de08b1703ea315690b593d76366e skills/1password-secrets/SKILL.md
 4adfde131ad9da2424cc03e98dd906608f6b8479 skills/_template/SKILL.md
 ee84687ea1d484fbb9c4994562087720cbc2e3b2 skills/ad-pixel-funnel/README.md
