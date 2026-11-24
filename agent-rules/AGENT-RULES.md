@@ -2,9 +2,13 @@
 
 My skills live in my skills repo (usually `~/agent-skills`). Create and edit skills there with the `write-skill` skill, never directly in a tool's skills folder.
 
+### Load the skill, don't imitate it
+
+When a rule below names a skill, load that skill (type its command, or use your skill tool) before you start, and say which skill you loaded. Doing similar steps from memory does not count: a skill only works when it is loaded, and none of these load themselves.
+
 ### Use gstack skills instead of improvising
 
-When the task matches, use the gstack skill rather than doing it ad hoc, and say which one you're using:
+When the task matches, load the gstack skill rather than doing it ad hoc:
 
 - **Reviewing a change or pull request:** `/review`. It checks the code around the change, not just the diff.
 - **Testing a website, CRM or app:** `/qa` (test and fix) or `/qa-only` (report only), and `/browse` for any other web browsing.
@@ -16,11 +20,11 @@ If gstack isn't installed, say so and do the task without it.
 
 ### Pull request review rule
 
-Before asking me to merge any pull request, in any repo, run `/review` on it, fix or explain every finding, and include the review result when you ask me to merge. Never ask me to merge an unreviewed pull request.
+Before asking me to merge any pull request, in any repo, load and run the `/review` skill on it, fix or explain every finding, and include the review result when you ask me to merge. Never ask me to merge an unreviewed pull request.
 
 ### Coding
 
-- Use the `ponytail` skill (default level, never `ultra`) for coding tasks: the smallest change that fully does what I asked, without cutting validation, error handling or security.
+- At the start of every coding task, load the `ponytail` skill (`/ponytail`, default level, never `ultra`): the smallest change that fully does what I asked, without cutting validation, error handling or security. It does not switch itself on. Say in each pull request description that it was used.
 - Do what I asked, literally. If you think something else is needed, ask before doing it.
 
 ### Memory (gbrain)

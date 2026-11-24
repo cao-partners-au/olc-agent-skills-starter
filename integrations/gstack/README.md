@@ -2,7 +2,7 @@
 
 **What it is.** A free pack of 40+ skills for Claude Code (also Codex and others) that turn common software jobs into checklists your agent follows: reviewing a change, testing a site in a real browser, shipping a release, debugging, security audits and more. Made by Garry Tan. Source: [garrytan/gstack](https://github.com/garrytan/gstack).
 
-**Does it help passively?** Mostly no. gstack helps when one of its skills runs. You can type the command (`/review`), or just ask naturally ("review this PR", "test the site") and the matching skill runs. Everyday coding ("fix this bug") doesn't go through gstack. That's why we add rules telling your agent when to use it: see [agent-rules](../../agent-rules/README.md).
+**Does it help passively?** Mostly no. gstack helps when one of its skills runs. You can type the command (`/review`), or ask naturally ("review this PR", "test the site") and the matching skill usually runs, though not always. Everyday coding ("fix this bug") doesn't go through gstack. That's why we add rules telling your agent when to use it: see [agent-rules](../../agent-rules/README.md).
 
 ## The skills worth knowing
 
